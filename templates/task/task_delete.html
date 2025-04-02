@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Delete{% endblock %}
+{% block content %}
+
+  <form action="" method="post" novalidate>
+    {% csrf_token %}
+    <button type="submit" value="yes">Delete</button>
+  </form>
+{% endblock %}
