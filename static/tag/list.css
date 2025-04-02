@@ -1,0 +1,24 @@
+.tags-page {
+    padding: 2rem;
+    width: 70%;
+}
+.tags-page a {
+    align-self: center;
+}
+.tags-page .head {
+    display: flex;
+    justify-content: space-between;
+}
+.tags-page table {
+    width: 100%;
+    padding: 1rem;
+}
+tr {
+    border: 1px solid;
+}
+th {
+    padding: 0.5rem;
+}
+td {
+    padding: 0.5rem;
+}

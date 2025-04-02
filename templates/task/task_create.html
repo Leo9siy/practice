@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% load crispy_forms_filters %}
-{% block title %}Tas Create {% endblock %}
+{% block title %}Task {{ object|yesno:"Update,Create" }} {% endblock %}
 {% block content %}
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/../../static/task/create.css' %}">
 
   <div class="page">
-    <h1>Create Task</h1>
+    <h1>{{ object|yesno:"Update,Create" }} Task</h1>
     <div class="form">
       <form action="" method="post" novalidate>
         {% csrf_token %}

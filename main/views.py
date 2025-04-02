@@ -30,8 +30,9 @@ class TaskCreateView(CreateView):
 class TaskUpdateView(UpdateView):
     model = Task
     context_object_name = 'task'
-    template_name = "task/task_update.html"
-    fields = '__all__'
+    template_name = "task/task_create.html"
+    form_class = forms.TaskCreateForm
+    success_url = reverse_lazy('main:task_list')
 
 
 class TaskDeleteView(DeleteView):
@@ -44,24 +45,27 @@ class TaskDeleteView(DeleteView):
 class TagCreateView(CreateView):
     model = Tag
     context_object_name = 'tag'
+    fields = '__all__'
     template_name = "tag/tag_create.html"
+    success_url = reverse_lazy('main:tag_list')
 
 
 class TagListView(ListView):
     model = Tag
     context_object_name = 'tags_list'
-    template_name = "task/tags.html"
+    template_name = "tag/tags.html"
 
 
 class TagUpdateView(UpdateView):
     model = Tag
     context_object_name = 'tag'
-    template_name = "tag/tag_update.html"
+    template_name = "tag/tag_create.html"
     fields = '__all__'
+    success_url = reverse_lazy('main:tag_list')
 
 
 class TagDeleteView(DeleteView):
     model = Tag
     context_object_name = 'tag'
     template_name = "tag/tag_delete.html"
-    fields = '__all__'
+    success_url = reverse_lazy('main:tag_list')

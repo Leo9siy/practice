@@ -12,6 +12,7 @@ class TaskCreateForm(forms.ModelForm):
     )
 
     deadline = forms.DateTimeField(
+        required=False,
         widget=forms.DateTimeInput(
             attrs={
                 "type": "datetime-local",

@@ -2,8 +2,13 @@
 {% block title %}Delete{% endblock %}
 {% block content %}
 
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    <button type="submit" value="yes">Delete</button>
-  </form>
+  <div class="page">
+    <h1>Delete {{ task.content }}?</h1>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      <button class="btn btn-danger" type="submit" value="yes">Yes</button>
+      <a class="btn btn-secondary" href="{% url "main:task_list" %}">Back</a>
+    </form>
+  </div>
+
 {% endblock %}
