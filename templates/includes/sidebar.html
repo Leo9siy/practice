@@ -1,0 +1,8 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
+<nav>
+  <ul class="nav-list">
+    <li><a href="{% url 'main:task_list' %}">Home</a></li>
+    <li><a href="{% url 'main:tag_list' %}">Tags</a></li>
+  </ul>
+</nav>

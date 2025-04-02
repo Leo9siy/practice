@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="page">
+    <div class="main">
+      <h1>TODO list</h1>
+
+      <a class="btn btn-primary" href="{% url 'main:task_create' %}">Add task</a>
+    </div>
+
+
+    <div class="tasks">
+      {% for task in task_list %}
+        <div class="task">
+          <div class="content">
+            <div class="head">
+              <strong>
+                <span>{{ task.content }}</span>
+                {% if task.done %}
+                  <span style="color: green">DONE</span>
+                {% else %}
+                  <span style="color: red">NOT DONE</span>
+                {% endif %}
+              </strong>
+            </div>
+
+            <p>
+              Created: {{ task.datetime }}
+              {% if task.deadline %}
+                <span style="color: red">Deadline: {{ task.deadline }}</span>
+              {% endif %}
+            </p>
+            <p>
+              Tags:
+              {% for tag in task.get_tags %}
+                {{ tag }}
+              {% endfor %}
+              <a href="{% url 'main:task_update' task.id %}">Update</a>
+              <a href="{% url 'main:task_delete' task.id %}">Delete</a>
+            </p>
+          </div>
+          <div class="done">
+            <form action="" method="post">
+              {% csrf_token %}
+              <input name="id" value="{{ task.id }}" hidden>
+              <button type="submit" class="btn {{ task.done|yesno:"btn-secondary,btn-success"}}">
+                {{ task.done|yesno:"Undo,Complete" }}
+              </button>
+            </form>
+          </div>
+        </div>
+      {% empty %}
+        <p>No one Taks was found :(</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

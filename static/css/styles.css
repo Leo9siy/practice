@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Shafarik&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+}
+
+/* page */
+.page {
+    margin: 2rem;
+    display: inline-block;
+    width: 100%;
+}
+.main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.main a {
+    align-self: center;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task {
+    border: 1px solid;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
