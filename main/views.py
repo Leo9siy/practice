@@ -1,22 +1,24 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from main import forms
 from main.models import Task, Tag
 
 
-class TaskListView(ListView):
-    model = Task
-    context_object_name = 'task_list'
+class TaskListView(View):
     template_name = "task/tasks.html"
 
+    def get(self, request):
+        tasks = Task.objects.all()
+        return render(request, self.template_name, {'task_list': tasks})
+
     def post(self, request, *args, **kwargs):
-        if request.method == "POST":
-            task = Task.objects.get(pk=request.POST['id'])
-            task.done = not task.done
-            task.save()
-            return redirect(reverse_lazy('main:task_list'))
+        task = Task.objects.get(pk=request.POST['id'])
+        task.done = not task.done
+        task.save()
+        return redirect(reverse_lazy('main:task_list'))
 
 
 class TaskCreateView(CreateView):

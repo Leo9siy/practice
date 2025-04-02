@@ -42,8 +42,9 @@
             <form action="" method="post">
               {% csrf_token %}
               <input name="id" value="{{ task.id }}" hidden>
-            <button type="submit" class="btn {{ task.done|yesno:"btn-secondary,btn-success"}}">
-              {{ task.done|yesno:"Undo,Complete" }}</button>
+              <button type="submit" class="btn {{ task.done|yesno:"btn-secondary,btn-success"}}">
+                {{ task.done|yesno:"Undo,Complete" }}
+              </button>
             </form>
           </div>
         </div>
